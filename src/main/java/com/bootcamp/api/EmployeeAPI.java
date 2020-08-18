@@ -231,4 +231,9 @@ public class EmployeeAPI {
 		}
 		return finall;
 	}
+	
+	@GetMapping("/")
+	String hello() {
+		return "Hello World";
+	}
 }
