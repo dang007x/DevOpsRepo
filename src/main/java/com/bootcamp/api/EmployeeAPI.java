@@ -236,4 +236,16 @@ public class EmployeeAPI {
 	String hello() {
 		return "Hello World";
 	}
+	
+	@GetMapping("/test")
+	EmployeeFoundDTO test() {
+		EmployeeFoundDTO dto = new EmployeeFoundDTO();
+		dto.setEmployee_id(12);
+		dto.setName("Nguyen Dag");
+		dto.setEmail("ththth@gmail.com");
+		dto.setDepartment_id(1239);
+		dto.setDepartment_name("XLLL");
+		dto.setSalary(10000);
+		return dto;
+	}
 }
