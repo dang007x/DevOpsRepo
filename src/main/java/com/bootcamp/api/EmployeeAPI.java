@@ -81,58 +81,40 @@ public class EmployeeAPI {
 	@GetMapping(value = "/employee/plus")
 	public List<EmployeeInformationDTO> showDetail1() throws JsonProcessingException {
 		List<Object[]> result = employeeService.showDetail();
-		List<EmployeeInformationDTO> finall = new ArrayList<EmployeeInformationDTO>(); 
-		
-		for(int i = 0; i < result.size(); i++) {
-			EmployeeInformationDTO dto = new EmployeeInformationDTO();
-			dto.setEmployee_id((Integer) result.get(i)[0]);
-			dto.setName((String) result.get(i)[1]);
-			dto.setDepartment_name((String) result.get(i)[2]);
-			dto.setEmail((String) result.get(i)[3]);
-			dto.setPhone_number((String) result.get(i)[4]);
-			dto.setHire_date((String) result.get(i)[5]);
-			dto.setSalary((Integer) result.get(i)[6]);
-			dto.setJob_id((String) result.get(i)[7]);
-			dto.setManager_id((Integer) result.get(i)[8]);
-			dto.setCommission_pct((Integer) result.get(i)[9]);
-			dto.setCity((String) result.get(i)[10]);
-			dto.setStreet_address((String) result.get(i)[11]);
-			
-			finall.add(dto);
-		}
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/id")
-	public List<EmployeeFoundDTO> findById(@RequestParam(name = "employee_id") Integer employee_id) {
+	public List<EmployeeInformationDTO> findById(@RequestParam(name = "employee_id") Integer employee_id) {
 		List<Object[]> result = employeeService.findEmployeeById(employee_id);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/city")
-	public List<EmployeeFoundDTO> findByCity(@RequestParam(name = "city") String city) {
+	public List<EmployeeInformationDTO> findByCity(@RequestParam(name = "city") String city) {
 		List<Object[]> result = employeeService.findEmployeeByCity(city);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/department_name")
-	public List<EmployeeFoundDTO> findByDepartment(@RequestParam(name = "name") String department_name) {
+	public List<EmployeeInformationDTO> findByDepartment(@RequestParam(name = "name") String department_name) {
 		List<Object[]> result = employeeService.findEmployeeByDepartmentName(department_name);;
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/name")
-	public List<EmployeeFoundDTO> findByName(@RequestParam(name = "first_name", required = false) String first_name,
+	public List<EmployeeInformationDTO> findByName(@RequestParam(name = "first_name", required = false) String first_name,
 								   @RequestParam(name = "last_name", required = false) String last_name) {
 		
-		List<EmployeeFoundDTO> finall = new ArrayList<EmployeeFoundDTO>();
+		List<EmployeeInformationDTO> finall = new ArrayList<EmployeeInformationDTO>();
 		
 		if(last_name == null) {
 			List<Object[]> result = employeeService.findEmployeeByFirstName(first_name);
@@ -151,50 +133,50 @@ public class EmployeeAPI {
 	}
 	
 	@GetMapping(value = "/employee/jobid")
-	public List<EmployeeFoundDTO> findByJobId(@RequestParam(name = "job_id") String job_id) {
+	public List<EmployeeInformationDTO> findByJobId(@RequestParam(name = "job_id") String job_id) {
 		List<Object[]> result = employeeService.findEmployeeByJobId(job_id);	
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/hire_date")
-	public List<EmployeeFoundDTO> findByHireDate(@RequestParam(name = "hire_date") String hire_date) {
+	public List<EmployeeInformationDTO> findByHireDate(@RequestParam(name = "hire_date") String hire_date) {
 		List<Object[]> result = employeeService.findEmployeeByHireDate(hire_date);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/salary")
-	public List<EmployeeFoundDTO> findBySalary(@RequestParam(name = "begin") Integer begin, 
+	public List<EmployeeInformationDTO> findBySalary(@RequestParam(name = "begin") Integer begin, 
 											   @RequestParam(name = "end") Integer end) {
 		List<Object[]> result = employeeService.findEmployeeBySalary(begin, end);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/email")
-	public List<EmployeeFoundDTO> findByEmail(@RequestParam(name = "email") String email) {
+	public List<EmployeeInformationDTO> findByEmail(@RequestParam(name = "email") String email) {
 		List<Object[]> result = employeeService.findEmployeeByEmail(email);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/phone_number")
-	public List<EmployeeFoundDTO> findByPhone(@RequestParam(name = "number") String phone_number) {
+	public List<EmployeeInformationDTO> findByPhone(@RequestParam(name = "number") String phone_number) {
 		List<Object[]> result = employeeService.findEmployeeByPhone(phone_number);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
 	
 	@GetMapping(value = "/employee/street_address")
-	public List<EmployeeFoundDTO> findByStreet(@RequestParam(name = "street") String street) {
+	public List<EmployeeInformationDTO> findByStreet(@RequestParam(name = "street") String street) {
 		List<Object[]> result = employeeService.findEmployeeByStreet(street);
-		List<EmployeeFoundDTO> finall = convertObject(result);
+		List<EmployeeInformationDTO> finall = convertObject(result);
 		
 		return finall;
 	}
@@ -215,17 +197,23 @@ public class EmployeeAPI {
 		employeeService.delete(ids);
 	}
 	
-	public List<EmployeeFoundDTO> convertObject(List<Object[]> result) {
-		List<EmployeeFoundDTO> finall = new ArrayList<EmployeeFoundDTO>();
+	public List<EmployeeInformationDTO> convertObject(List<Object[]> result) {
+		List<EmployeeInformationDTO> finall = new ArrayList<EmployeeInformationDTO>();
 		
 		for(int i = 0; i < result.size(); i++) {
-			EmployeeFoundDTO dto = new EmployeeFoundDTO();
+			EmployeeInformationDTO dto = new EmployeeInformationDTO();
 			dto.setEmployee_id((Integer) result.get(i)[0]);
 			dto.setName((String) result.get(i)[1]);
-			dto.setEmail((String) result.get(i)[2]);
-			dto.setDepartment_id((Integer) result.get(i)[3]);
-			dto.setDepartment_name((String) result.get(i)[4]);
-			dto.setSalary((Integer) result.get(i)[5]);
+			dto.setDepartment_name((String) result.get(i)[2]);
+			dto.setEmail((String) result.get(i)[3]);
+			dto.setPhone_number((String) result.get(i)[4]);
+			dto.setHire_date((String) result.get(i)[5]);
+			dto.setSalary((Integer) result.get(i)[6]);
+			dto.setJob_id((String) result.get(i)[7]);
+			dto.setManager_id((Integer) result.get(i)[8]);
+			dto.setCommission_pct((Integer) result.get(i)[9]);
+			dto.setCity((String) result.get(i)[10]);
+			dto.setStreet_address((String) result.get(i)[11]);
 			
 			finall.add(dto);
 		}
