@@ -35,5 +35,6 @@ public interface IEmployeeService {
 	List<Object[]> findEmployeeByLastName(String last_name);
 	List<Object[]> findEmployeeByStreet(String street_address);
 	
+	
 	int totalItem();
 }
