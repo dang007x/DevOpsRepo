@@ -13,7 +13,7 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Intege
 				   "from employee as e, department as d, locations as l " + 
 			       "where e.department_id = d.department_id and d.location_id = l.location_id ";
 	
-	String queryPlus = "select e.employee_id, e.first_name, e.last_name, d.department_name, e.email, e.phone_number, e.hire_date, e.salary, e.job_id, d.manager_id, e.commission_pct, l.city, l.street_address " + 
+	String queryPlus = "select e.employee_id, e.first_name, e.last_name, d.department_id, e.email, e.phone_number, e.hire_date, e.salary, e.job_id, d.manager_id, e.commission_pct, l.city, l.street_address " + 
 			   		   "from employee as e, department as d, locations as l " + 
 			   		   "where e.department_id = d.department_id and d.location_id = l.location_id";
 	
