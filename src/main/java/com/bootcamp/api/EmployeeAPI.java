@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bootcamp.api.output.EmployeeLiteOutput;
 import com.bootcamp.api.output.EmployeeOutput;
 import com.bootcamp.dto.EmployeeDTO;
-import com.bootcamp.dto.EmployeeFoundDTO;
 import com.bootcamp.dto.EmployeeInformationDTO;
+import com.bootcamp.dto.EmployeePlusDTO;
 import com.bootcamp.service.IEmployeeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -79,9 +79,9 @@ public class EmployeeAPI {
 //	}
 	
 	@GetMapping(value = "/employee/plus")
-	public List<EmployeeInformationDTO> showDetail1() throws JsonProcessingException {
+	public List<EmployeePlusDTO> showDetail() throws JsonProcessingException {
 		List<Object[]> result = employeeService.showDetail();
-		List<EmployeeInformationDTO> finall = convertObject(result);
+		List<EmployeePlusDTO> finall = convertObjectPlus(result);
 		
 		return finall;
 	}
@@ -203,17 +203,43 @@ public class EmployeeAPI {
 		for(int i = 0; i < result.size(); i++) {
 			EmployeeInformationDTO dto = new EmployeeInformationDTO();
 			dto.setEmployee_id((Integer) result.get(i)[0]);
-			dto.setName((String) result.get(i)[1]);
-			dto.setDepartment_name((String) result.get(i)[2]);
-			dto.setEmail((String) result.get(i)[3]);
-			dto.setPhone_number((String) result.get(i)[4]);
-			dto.setHire_date((String) result.get(i)[5]);
-			dto.setSalary((Integer) result.get(i)[6]);
-			dto.setJob_id((String) result.get(i)[7]);
-			dto.setManager_id((Integer) result.get(i)[8]);
-			dto.setCommission_pct((Integer) result.get(i)[9]);
-			dto.setCity((String) result.get(i)[10]);
-			dto.setStreet_address((String) result.get(i)[11]);
+			dto.setFull_name((String) result.get(i)[1]);
+			dto.setFirst_name((String) result.get(i)[2]);
+			dto.setLast_name((String) result.get(i)[3]);
+			dto.setDepartment_name((String) result.get(i)[4]);
+			dto.setEmail((String) result.get(i)[5]);
+			dto.setPhone_number((String) result.get(i)[6]);
+			dto.setHire_date((String) result.get(i)[7]);
+			dto.setSalary((Integer) result.get(i)[8]);
+			dto.setJob_id((String) result.get(i)[9]);
+			dto.setManager_id((Integer) result.get(i)[10]);
+			dto.setCommission_pct((Integer) result.get(i)[11]);
+			dto.setCity((String) result.get(i)[12]);
+			dto.setStreet_address((String) result.get(i)[13]);
+			
+			finall.add(dto);
+		}
+		return finall;
+	}
+	
+	public List<EmployeePlusDTO> convertObjectPlus(List<Object[]> result) {
+		List<EmployeePlusDTO> finall = new ArrayList<EmployeePlusDTO>();
+		
+		for(int i = 0; i < result.size(); i++) {
+			EmployeePlusDTO dto = new EmployeePlusDTO();
+			dto.setEmployee_id((Integer) result.get(i)[0]);
+			dto.setFirst_name((String) result.get(i)[1]);
+			dto.setLast_name((String) result.get(i)[2]);
+			dto.setDepartment_id((Integer) result.get(i)[3]);
+			dto.setEmail((String) result.get(i)[4]);
+			dto.setPhone_number((String) result.get(i)[5]);
+			dto.setHire_date((String) result.get(i)[6]);
+			dto.setSalary((Integer) result.get(i)[7]);
+			dto.setJob_id((String) result.get(i)[8]);
+			dto.setManager_id((Integer) result.get(i)[9]);
+			dto.setCommission_pct((Integer) result.get(i)[10]);
+			dto.setCity((String) result.get(i)[11]);
+			dto.setStreet_address((String) result.get(i)[12]);
 			
 			finall.add(dto);
 		}
@@ -223,17 +249,5 @@ public class EmployeeAPI {
 	@GetMapping("/")
 	String hello() {
 		return "Hello World";
-	}
-	
-	@GetMapping("/test")
-	EmployeeFoundDTO test() {
-		EmployeeFoundDTO dto = new EmployeeFoundDTO();
-		dto.setEmployee_id(12);
-		dto.setName("Nguyen Dag");
-		dto.setEmail("ththth@gmail.com");
-		dto.setDepartment_id(1239);
-		dto.setDepartment_name("XLLL");
-		dto.setSalary(10000);
-		return dto;
 	}
 }
