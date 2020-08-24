@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,6 +20,7 @@ public class EmployeeEntity {
 	
 	@Id
 	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer employee_id;
 	
 	@Column
@@ -36,10 +39,10 @@ public class EmployeeEntity {
 	private String hire_date;
 	
 	@Column
-	private Integer salary;
+	private Double salary;
 	
 	@Column
-	private Integer commission_pct;
+	private Double commission_pct;
 	
 
 	@OneToOne(mappedBy = "manager")
@@ -107,10 +110,10 @@ public class EmployeeEntity {
 		return hire_date;
 	}
 
-	public Integer getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
-	public Integer getCommission_pct() {
+	public Double getCommission_pct() {
 		return commission_pct;
 	}
 	public void setEmployee_id(Integer employee_id) {
@@ -132,10 +135,10 @@ public class EmployeeEntity {
 		this.hire_date = hire_date;
 	}
 
-	public void setSalary(Integer salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
-	public void setCommission_pct(Integer commission_pct) {
+	public void setCommission_pct(Double commission_pct) {
 		this.commission_pct = commission_pct;
 	}
 }

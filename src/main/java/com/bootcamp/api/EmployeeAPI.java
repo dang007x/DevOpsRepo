@@ -210,10 +210,10 @@ public class EmployeeAPI {
 			dto.setEmail((String) result.get(i)[5]);
 			dto.setPhone_number((String) result.get(i)[6]);
 			dto.setHire_date((String) result.get(i)[7]);
-			dto.setSalary((Integer) result.get(i)[8]);
+			dto.setSalary((Double) result.get(i)[8]);
 			dto.setJob_id((String) result.get(i)[9]);
 			dto.setManager_id((Integer) result.get(i)[10]);
-			dto.setCommission_pct((Integer) result.get(i)[11]);
+			dto.setCommission_pct((Double) result.get(i)[11]);
 			dto.setCity((String) result.get(i)[12]);
 			dto.setStreet_address((String) result.get(i)[13]);
 			
@@ -234,10 +234,10 @@ public class EmployeeAPI {
 			dto.setEmail((String) result.get(i)[4]);
 			dto.setPhone_number((String) result.get(i)[5]);
 			dto.setHire_date((String) result.get(i)[6]);
-			dto.setSalary((Integer) result.get(i)[7]);
+			dto.setSalary((Double) result.get(i)[7]);
 			dto.setJob_id((String) result.get(i)[8]);
 			dto.setManager_id((Integer) result.get(i)[9]);
-			dto.setCommission_pct((Integer) result.get(i)[10]);
+			dto.setCommission_pct((Double) result.get(i)[10]);
 			dto.setCity((String) result.get(i)[11]);
 			dto.setStreet_address((String) result.get(i)[12]);
 			

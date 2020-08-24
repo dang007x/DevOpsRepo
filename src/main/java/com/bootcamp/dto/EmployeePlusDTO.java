@@ -8,10 +8,10 @@ public class EmployeePlusDTO {
 	private String email;
 	private String phone_number;
 	private String hire_date;
-	private Integer salary;
+	private Double salary;
 	private String job_id;
 	private Integer manager_id;
-	private Integer commission_pct;
+	private Double commission_pct;
 	private String city;
 	private String street_address;
 	
@@ -36,7 +36,7 @@ public class EmployeePlusDTO {
 	public String getHire_date() {
 		return hire_date;
 	}
-	public Integer getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 	public String getJob_id() {
@@ -45,7 +45,7 @@ public class EmployeePlusDTO {
 	public Integer getManager_id() {
 		return manager_id;
 	}
-	public Integer getCommission_pct() {
+	public Double getCommission_pct() {
 		return commission_pct;
 	}
 	public String getCity() {
@@ -75,7 +75,7 @@ public class EmployeePlusDTO {
 	public void setHire_date(String hire_date) {
 		this.hire_date = hire_date;
 	}
-	public void setSalary(Integer salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 	public void setJob_id(String job_id) {
@@ -84,7 +84,7 @@ public class EmployeePlusDTO {
 	public void setManager_id(Integer manager_id) {
 		this.manager_id = manager_id;
 	}
-	public void setCommission_pct(Integer commission_pct) {
+	public void setCommission_pct(Double commission_pct) {
 		this.commission_pct = commission_pct;
 	}
 	public void setCity(String city) {
